@@ -6,6 +6,7 @@ import harouane.U5W1D2_SpringComponents.Entities.Menu.MenuItem;
 import harouane.U5W1D2_SpringComponents.Entities.Menu.Pizza;
 import harouane.U5W1D2_SpringComponents.Entities.Order;
 import harouane.U5W1D2_SpringComponents.Entities.Table;
+import harouane.U5W1D2_SpringComponents.Main;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -22,9 +23,9 @@ public class Runner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(Runner.class);
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(Main.class);
         menu.print();
-        Table table = new Table(3);
+        Table table = (Table) ctx.getBean("getTable1");
         Pizza pizza1 = (Pizza) ctx.getBean("hawaiianPizza");
         Pizza pizza2 = (Pizza) ctx.getBean("pizzaMargherita");
         Pizza pizza3 = (Pizza) ctx.getBean("salamiPizza");

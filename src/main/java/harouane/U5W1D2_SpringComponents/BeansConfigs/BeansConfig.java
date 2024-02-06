@@ -6,6 +6,7 @@ import harouane.U5W1D2_SpringComponents.Entities.Menu.Drinks.NonAlcholic.Alcholi
 import harouane.U5W1D2_SpringComponents.Entities.Menu.Menu;
 import harouane.U5W1D2_SpringComponents.Entities.Menu.Pizza;
 import harouane.U5W1D2_SpringComponents.Entities.Menu.Topping;
+import harouane.U5W1D2_SpringComponents.Entities.Table;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -95,6 +96,16 @@ public class BeansConfig {
     @Bean
     double getPriceOfSeat(@Value("${restaurant.priceSeat}") String price) {
         return Double.parseDouble(price);
+    }
+
+    @Bean
+    Table getTable1() {
+        return new Table(3);
+    }
+
+    @Bean
+    Table getTable2() {
+        return new Table(5);
     }
 
     @Bean(name = "menu")
