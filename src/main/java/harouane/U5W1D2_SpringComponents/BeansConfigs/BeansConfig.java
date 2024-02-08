@@ -3,7 +3,6 @@ package harouane.U5W1D2_SpringComponents.BeansConfigs;
 import harouane.U5W1D2_SpringComponents.Entities.Menu.Drinks.Alcholics.Alcholic;
 import harouane.U5W1D2_SpringComponents.Entities.Menu.Drinks.Drink;
 import harouane.U5W1D2_SpringComponents.Entities.Menu.Drinks.NonAlcholic.AlcholicFree;
-import harouane.U5W1D2_SpringComponents.Entities.Menu.Menu;
 import harouane.U5W1D2_SpringComponents.Entities.Menu.Pizza;
 import harouane.U5W1D2_SpringComponents.Entities.Menu.Topping;
 import harouane.U5W1D2_SpringComponents.Entities.Table;
@@ -108,23 +107,33 @@ public class BeansConfig {
         return new Table(5);
     }
 
-    @Bean(name = "menu")
-    Menu menu() {
+    @Bean
+    List<Pizza> getListOfPizzas() {
+        List<Pizza> pizzas = new ArrayList<>();
+        pizzas.add(pizzaMargherita());
+        pizzas.add(hawaiianPizza());
+        pizzas.add(salamiPizza());
+        return pizzas;
+    }
+
+    @Bean
+    List<Topping> getListOfToppings() {
         List<Topping> toppings = new ArrayList<>();
         toppings.add(ham());
         toppings.add(extraCheese());
         toppings.add(salami());
         toppings.add(onions());
         toppings.add(pineapple());
-        List<Pizza> pizzas = new ArrayList<>();
-        pizzas.add(pizzaMargherita());
-        pizzas.add(hawaiianPizza());
-        pizzas.add(salamiPizza());
+        return toppings;
+    }
+
+    @Bean
+    List<Drink> getListOfDrinks() {
         List<Drink> drinks = new ArrayList<>();
         drinks.add(water());
         drinks.add(lemonade());
         drinks.add(wine());
-        return new Menu(pizzas, drinks, toppings);
+        return drinks;
     }
 
 }
